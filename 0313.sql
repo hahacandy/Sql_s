@@ -61,5 +61,7 @@ CREATE TABLE 카테고리(
 
 //별도
 1월을 2월로 바꾸기 (REPLACE 를 쓰지않고)
-SELECT SUBSTR('이번달은 1월 입니다', INSTR('이번달은 1월 입니다', '1월'), LENGTH('1월')) FROM DUAL
+SELECT SUBSTR('이번달은 1월 입니다', 0, INSTR('이번달은 1월 입니다', '1월')-1) FROM DUAL
+SELECT SUBSTR('이번달은 1월 입니다', INSTR('이번달은 1월 입니다', '1월')+2, LENGTH('이번달은 1월 입니다')) FROM DUAL
 
+SELECT CONCAT(SUBSTR('이번달은 1월 입니다', 0, INSTR('이번달은 1월 입니다', '1월')-1), CONCAT('2월', SUBSTR('이번달은 1월 입니다', INSTR('이번달은 1월 입니다', '1월')+2, LENGTH('이번달은 1월 입니다'))) ) FROM DUAL
